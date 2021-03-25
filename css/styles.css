@@ -1,0 +1,664 @@
+body {
+    background-color: black;
+}
+
+/*背景動画*/
+.overlay, #yt_player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+ 
+.overlay{
+    z-index: -1;
+}
+ 
+#yt_player{
+    z-index: -2;
+}
+/*ここまで*/
+
+
+/*基本*/
+
+.container-t {
+    width: 500px;
+    display: table-cell;
+    text-align: center;
+}
+
+.container-i {
+    width: 200px;
+    display: table-cell;
+    text-align: center;
+}
+
+.container-r {
+    width: 100px;
+    display: table-cell;
+    text-align: left;
+  }
+
+.item {
+    margin: 7px;
+    font-size:1.3em;
+    filter: contrast(2);
+}
+
+#timer {
+    font-size: 35px;
+    font-weight: bolder;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(3, 3, 161);
+    text-shadow:  
+    rgb(255, 255, 255) 1px 0px 1px,rgb(255, 255, 255) -1px 0px 1px,
+    rgb(255, 255, 255) 0px -1px 1px, rgb(255, 255, 255) -1px 0px 1px,
+    rgb(255, 255, 255) 1px 1px 1px, rgb(255, 255, 255) -1px 1px 1px,
+    rgb(255, 255, 255) 1px -1px 1px, rgb(255, 255, 255) -1px -1px 1px,
+    rgb(255, 255, 255) 1px 1px 1px, rgb(255, 255, 255) -1px 1px 1px,
+    rgb(255, 255, 255) 1px -1px 1px, rgb(255, 255, 255) -1px -1px 1px,
+    rgb(255, 255, 255) 1px 1px 1px, rgb(255, 255, 255) -1px 1px 1px,
+    rgb(255, 255, 255) 1px -1px 2px, rgb(255, 255, 255) -1px -1px 1px,
+    rgb(255, 255, 255) 1px 1px 2px,rgb(255, 255, 255) -1px 1px 1px,
+    rgb(255, 255, 255) 1px -1px 2px, rgb(255, 255, 255) -1px -1px 1px;
+}
+
+#restart {
+    font-size: 20px;
+    color: rgb(3, 3, 161);
+    text-shadow:  
+    white 1px 0px 2px,white -1px 0px 2px,
+    white 0px -1px 2px, white -1px 0px 2px,
+    white 1px 1px 2px, white -1px 1px 2px,
+    white 1px -1px 2px, white -1px -1px 2px,
+    white 1px 1px 2px, white -1px 1px 2px,
+    white 1px -1px 2px, white -1px -1px 2px,
+    white 1px 1px 2px, white -1px 1px 2px,
+    white 1px -1px 2px, white -1px -1px 2px,
+    white 1px 1px 2px,white -1px 1px 2px,
+    white 1px -1px 2px, white -1px -1px 2px;
+    text-decoration: none;
+    cursor: pointer;    
+    position: relative;
+}
+
+#gameClear {
+    font-size: 45px;
+    font-style: italic;
+    color: rgb(255, 255, 255);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-shadow: 0 0 5px rgb(90, 90, 233), 0 0 10px rgb(34, 34, 230), 0 0 20px rgb(36, 14, 236), 0 0 5px #fff, 0 0 5px rgb(61, 22, 238), 0 0 5px #84d0fc, 0 0 15px #5310be, 0 0 20px #a4c3fd, 0 0 40px #6538e2, 0 0 60px #5590e9, 0 0 10px #031c52, 0 0 98px #360bd3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+}
+
+ul {
+    height: 100vh;
+    flex-wrap: wrap;
+    display: flex;
+    align-content: center;
+  }
+
+  html, body {
+    overflow: hidden;
+   }
+  
+    #card {
+        width: auto;
+        max-width: 100%;
+        list-style: none;
+        display: inline-block;
+        top: 50%;
+        left: 50%; 
+        width: 900px;
+        height: 600px;
+        -webkit-transform : translate(-50%,-50%);
+        transform : translate(-50%,-50%);
+        position: absolute;
+    }
+
+    #card li {
+        border-radius: 2px;
+        border: 1px solid silver;
+        box-shadow: 0 0 10px grey;
+        float: left;
+        cursor: pointer;
+        width: 120px;
+        height: 160pX;        
+        margin: 8px;
+        position: relative;
+        transform : translate(10%,0%);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    #card li img {
+        border-radius: 2px;
+        border: 1px solid silver;
+        box-shadow: 0 0 8px grey;
+        float: left;
+        cursor: pointer;
+        width: 120px;
+        height: 160pX;
+        position: absolute;
+
+    }
+    #card li.off, #card li.lock {
+        pointer-events : none;
+    }
+
+/*ここまで*/
+
+/*モバイル（小）縦*/
+@media (max-width: 280px) and (orientation: portrait) {
+
+
+    .container-t {
+        min-width: 100%;
+        width: 80px;
+        display: table-cell;
+        text-align: left;
+    }
+    
+    .container-i {
+        min-width: 100%;
+        width: 100px;
+        display: table-cell;
+        text-align: left;
+    }
+    
+    .container-r {
+        min-width: 100%;
+        width: 60px;
+        display: table-cell;
+        text-align: right;
+      }
+    
+    .item {
+        margin: 3px;
+        font-size:1em;
+        filter: contrast(2);
+    }
+
+    #timer {
+        font-size: 20px;
+        font-family: 'Shippori Mincho', serif;
+        color: rgb(5, 5, 78);
+        text-shadow:  
+        white 1px 0px 2px,white -1px 0px 2px,
+        white 0px -1px 2px, white -1px 0px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px,white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px;
+    }
+    
+    #restart {
+        font-size: 20px;
+        color: rgb(5, 5, 78);
+        text-shadow:  
+        white 1px 0px 2px,white -1px 0px 2px,
+        white 0px -1px 2px, white -1px 0px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px,white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px;
+        text-decoration: none;
+        cursor: pointer;    
+        position: relative;
+    }
+
+    #gameClear {
+        font-size: 25px;
+        font-style: italic;
+        color: rgb(255, 255, 255);
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        text-shadow: 0 0 5px rgb(90, 90, 233), 0 0 10px rgb(34, 34, 230), 0 0 20px rgb(36, 14, 236), 0 0 5px #fff, 0 0 5px rgb(61, 22, 238), 0 0 5px #84d0fc, 0 0 15px #5310be, 0 0 20px #a4c3fd, 0 0 40px #6538e2, 0 0 60px #5590e9, 0 0 10px #031c52, 0 0 98px #360bd3;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform : translate(-50%,-50%);
+        transform : translate(-50%,-50%);
+    }
+
+    #card {
+        width: auto;
+        max-width: 100%;
+        list-style: none;
+        display: inline-block;
+        top: 50%;
+        left: 50%;
+        width: 280px;
+        height: 300px;
+        -webkit-transform : translate(-50%,-50%);
+        transform : translate(-50%,-50%);
+        position: absolute;
+        }
+
+        #card li {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 40px;
+            height: 55pX;        
+            margin: 2px;
+            position: relative;
+            transform : translate(-45%,10%);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        #card li img {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 40px;
+            height: 55pX;
+            position: absolute; 
+        }
+        #card li.off, #card li.lock {
+        pointer-events : none;
+        }
+}
+
+/*モバイル縦*/
+@media (max-width: 599px) and (min-width: 281px) and (orientation: portrait) {
+       .container-t {
+        min-width: 100%;
+        width: 80px;
+        display: table-cell;
+        text-align: left;
+    }
+    
+    .container-i {
+        min-width: 100%;
+        width: 100px;
+        display: table-cell;
+        text-align: left;
+    }
+    
+    .container-r {
+        min-width: 100%;
+        width: 60px;
+        display: table-cell;
+        text-align: right;
+      }
+    
+    .item {
+        margin: 3px;
+        font-size:1em;
+        filter: contrast(2);
+    }
+
+    #timer {
+        font-size: 20px;
+        font-family: 'Shippori Mincho', serif;
+        color: rgb(5, 5, 78);
+        text-shadow:  
+        white 1px 0px 2px,white -1px 0px 2px,
+        white 0px -1px 2px, white -1px 0px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px,white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px;
+    }
+    
+    #restart {
+        font-size: 20px;
+        color: rgb(5, 5, 78);
+        text-shadow:  
+        white 1px 0px 2px,white -1px 0px 2px,
+        white 0px -1px 2px, white -1px 0px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px,white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px;
+        text-decoration: none;
+        cursor: pointer;    
+        position: relative;
+    }
+
+    #gameClear {
+        font-size: 30px;
+        font-style: italic;
+        color: rgb(255, 255, 255);
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        text-shadow: 0 0 5px rgb(90, 90, 233), 0 0 10px rgb(34, 34, 230), 0 0 20px rgb(36, 14, 236), 0 0 5px #fff, 0 0 5px rgb(61, 22, 238), 0 0 5px #84d0fc, 0 0 15px #5310be, 0 0 20px #a4c3fd, 0 0 40px #6538e2, 0 0 60px #5590e9, 0 0 10px #031c52, 0 0 98px #360bd3;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform : translate(-50%,-50%);
+        transform : translate(-50%,-50%);
+    }
+
+    #card {
+        width: auto;
+        max-width: 100%;
+        list-style: none;
+        display: inline-block;
+        top: 50%;
+        left: 50%;
+        width: 320px;
+        height: 300px;
+        -webkit-transform : translate(-50%,-50%);
+        transform : translate(-50%,-50%);
+        position: absolute;
+        }
+
+        #card li {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 45px;
+            height: 60pX;        
+            margin: 2px;
+            position: relative;
+            transform : translate(-30%,10%);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        #card li img {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 45px;
+            height: 60pX;
+            position: absolute; 
+        }
+        #card li.off, #card li.lock {
+        pointer-events : none;
+        }
+}
+
+/*モバイル（大）縦・タブレット*/
+@media (max-width: 800px) and (min-width: 599px) and (orientation: portrait) {
+    #card {
+        width: auto;
+        max-width: 100%;
+        list-style: none;
+        display: inline-block;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 500px;
+        -webkit-transform : translate(-50%,-50%);
+        transform : translate(-50%,-50%);
+        position: absolute;
+        }
+
+        #card li {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 90px;
+            height: 120pX;        
+            margin: 2px;
+            position: relative;
+            transform : translate(-5%,10%);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        
+        #card li img {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 90px;
+            height: 120pX;
+            position: absolute; 
+        }
+        #card li.off, #card li.lock {
+        pointer-events : none;
+        }
+}
+
+
+/*モバイル（小）横*/
+@media (max-height: 280px) and (orientation: landscape) {
+    
+    .container-t {
+        min-width: 100%;
+        width: 80px;
+        display: table-cell;
+        text-align: left;
+    }
+    
+    .container-i {
+        min-width: 100%;
+        width: 100px;
+        display: table-cell;
+        text-align: left;
+    }
+    
+    .container-r {
+        min-width: 100%;
+        width: 60px;
+        display: table-cell;
+        text-align: right;
+      }
+    
+    .item {
+        margin: 3px;
+        font-size:1em;
+        filter: contrast(2);
+    }
+
+    #timer {
+        font-size: 20px;
+        font-family: 'Shippori Mincho', serif;
+        color: rgb(5, 5, 78);
+        text-shadow:  
+        white 1px 0px 2px,white -1px 0px 2px,
+        white 0px -1px 2px, white -1px 0px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px,white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px;
+    }
+    
+    #restart {
+        font-size: 20px;
+        color: rgb(5, 5, 78);
+        text-shadow:  
+        white 1px 0px 2px,white -1px 0px 2px,
+        white 0px -1px 2px, white -1px 0px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px,white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px;
+        text-decoration: none;
+        cursor: pointer;    
+        position: relative;
+    }
+
+    #card {
+        width: auto;
+        max-width: 100%;
+        list-style: none;
+        display: inline-block;
+        top: 50%;
+        left: 50%;
+        width: 280px;
+        height: 300px;
+        -webkit-transform : translate(-50%,-50%);
+        transform : translate(-50%,-50%);
+        position: absolute;
+        }
+
+        #card li {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 40px;
+            height: 55pX;        
+            margin: 2px;
+            position: relative;
+            transform : translate(-45%,10%);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        #card li img {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 40px;
+            height: 55pX;
+            position: absolute; 
+        }
+        #card li.off, #card li.lock {
+        pointer-events : none;
+        }
+}
+
+/*モバイル横*/
+@media (max-height: 599px) and (min-height: 281px) and (orientation: landscape) {
+    .container-t {
+        min-width: 100%;
+        width: 80px;
+        display: table-cell;
+        text-align: left;
+    }
+    
+    .container-i {
+        min-width: 100%;
+        width: 100px;
+        display: table-cell;
+        text-align: left;
+    }
+    
+    .container-r {
+        min-width: 100%;
+        width: 60px;
+        display: table-cell;
+        text-align: right;
+      }
+    
+    .item {
+        margin: 3px;
+        font-size:1em;
+        filter: contrast(2);
+    }
+
+    #timer {
+        font-size: 20px;
+        font-family: 'Shippori Mincho', serif;
+        color: rgb(5, 5, 78);
+        text-shadow:  
+        white 1px 0px 2px,white -1px 0px 2px,
+        white 0px -1px 2px, white -1px 0px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px,white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px;
+    }
+    
+    #restart {
+        font-size: 20px;
+        color: rgb(5, 5, 78);
+        text-shadow:  
+        white 1px 0px 2px,white -1px 0px 2px,
+        white 0px -1px 2px, white -1px 0px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px, white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px,
+        white 1px 1px 2px,white -1px 1px 2px,
+        white 1px -1px 2px, white -1px -1px 2px;
+        text-decoration: none;
+        cursor: pointer;    
+        position: relative;
+    }
+
+    #card {
+        width: auto;
+        max-width: 100%;
+        list-style: none;
+        display: inline-block;
+        top: 50%;
+        left: 50%;
+        width: 320px;
+        height: 300px;
+        -webkit-transform : translate(-50%,-50%);
+        transform : translate(-50%,-50%);
+        position: absolute;
+        }
+
+        #card li {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 45px;
+            height: 60pX;        
+            margin: 2px;
+            position: relative;
+            transform : translate(-30%,10%);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        #card li img {
+            border-radius: 2px;
+            border: 1px solid silver;
+            box-shadow: 0 0 8px grey;
+            float: left;
+            cursor: pointer;
+            width: 45px;
+            height: 60pX;
+            position: absolute; 
+        }
+        #card li.off, #card li.lock {
+        pointer-events : none;
+        }
+}
